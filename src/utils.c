@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:01:14 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/04 23:48:20 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/06 14:08:39 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	get_max(t_stack *b)
 	int		max;
 
 	max = b->num;
+	temp = b;
 	temp = temp->next;
 	while (temp->next != b)
 	{

@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <limits.h>
 
-int	main(int argc, char **argv)
+int	main()
 {
 /* 	char	**split;
 	if (argc == 1)
@@ -28,21 +28,22 @@ int	main(int argc, char **argv)
 
 	b = NULL;
 	a = NULL;
+	stck_addlst(&a, create_node(7));
+ 	stck_addlst(&a, create_node(1));
+	stck_addlst(&a, create_node(6));
 	stck_addlst(&a, create_node(3));
 	stck_addlst(&a, create_node(9));
 	stck_addlst(&a, create_node(4));
 	stck_addlst(&a, create_node(8));
 
-	stck_addlst(&b, create_node(6));
-	stck_addlst(&b, create_node(5));
 	stck_addlst(&b, create_node(2));
- 	stck_addlst(&b, create_node(1));
-	stck_addlst(&b, create_node(7));
+	stck_addlst(&b, create_node(5));
 /*	stck_addlst(&b, create_node(2));
 	stck_addlst(&b, create_node(1));
 	stck_addlst(&b, create_node(7)); */
 	display_stacks(&a, &b);
-	printf("cheapest index: %d\n", get_indexcheapest(a, b));
+	printf("\n\n");
+	push_swap(a, b);
 	return (0);
 }
 void	init_stacks(char **numbers)
@@ -70,7 +71,7 @@ void	init_stacks(char **numbers)
 	{
 		stck_push(&b, &a, 'b');
 		stck_push(&b, &a, 'b');
-		ft_printf("cheapest_index: %d\n", get_indexcheapest(a, b));
+		// ft_printf("cheapest_number: %d\n", get_cheapestnumber());
 		display_stacks(&a, &b);
 	}
 }
