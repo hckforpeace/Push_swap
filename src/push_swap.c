@@ -6,13 +6,13 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:55:08 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/06 15:10:36 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/06 17:54:59 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_cheapestnumber(t_stack *a, t_stack *b, t_data *data)
+int	get_cheapestnumbera(t_stack *a, t_stack *b, t_data *data)
 {
 	int number;
 	int moves;
@@ -87,8 +87,8 @@ int	get_price(t_data *data, t_stack **a, t_stack **b, int action)
 	else
 	{
 		if (is_sephalf(data->nbra, data->nbrb, *a, *b))
-			return (apply_sep(data, a, b));
-		return (apply_moves(data, a, b));
+			return (apply_sep(data, a, b, PB));
+		return (apply_moves(data, a, b, PB));
 	}
 }
 

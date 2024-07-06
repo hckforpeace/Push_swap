@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:50:00 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/06 14:03:52 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/06 17:55:57 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define R 1
 # define CALC 0
 # define APPLY 1
+# define PB 12
+# define PA 13
 
 typedef struct s_stack
 {
@@ -62,7 +64,7 @@ void	sort_3(t_stack **stack, char c);
 
 
 // void	push_swap(t_stack *a, t_stack *b);
-int		get_cheapestnumber(t_stack *a, t_stack *b, t_data *data);
+int		get_cheapestnumbera(t_stack *a, t_stack *b, t_data *data);
 int		get_price(t_data *data, t_stack **a, t_stack **b, int action);
 int		get_totalmoves(int	movesa, int movesb, int len_a, int len_b);
 int		get_movestotop(int nbr, t_stack *stack);
@@ -80,10 +82,18 @@ int	get_numberidx(int idx, t_stack *stack);
 
 // push.c
 void	push_swap(t_stack *a, t_stack *b);
-int		apply_moves(t_data *data, t_stack **a, t_stack **b);
+int		apply_moves(t_data *data, t_stack **a, t_stack **b, int push);
 void 	apply_ab(t_data *data, t_stack **a, t_stack **b);
 void 	apply_bb(t_data *data, t_stack **a, t_stack **b);
 void	display_symrot(int i, int sens);
-int		apply_sep(t_data *data, t_stack **a, t_stack **b);
+int		apply_sep(t_data *data, t_stack **a, t_stack **b, int topush);
 void	apply_xrs(int i, t_stack **stack, char c, int sens);
+
+
+int	get_priceb(t_data *data, t_stack **a, t_stack **b, int action);
+int	get_numberb(int nbr, t_stack *a);
+int	get_min(t_stack *a);
+int	get_cheapestnumberb(t_stack *a, t_stack *b, t_data *data);
+void push_swapb(t_stack *a, t_stack *b, t_data *data);
+
 #endif

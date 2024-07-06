@@ -1,9 +1,9 @@
 #include "push_swap.h"
 #include <limits.h>
 
-int	main()
+int	main(int argc, char **argv)
 {
-/* 	char	**split;
+	char	**split;
 	if (argc == 1)
 		return (0);
 	else if (argc >= 2)
@@ -21,9 +21,9 @@ int	main()
 			init_stacks(&argv[1]);
 		else
 			ft_printf("Error\n");
-	} */
+	}
 
-	t_stack *a;
+/* 	t_stack *a;
 	t_stack *b;
 
 	b = NULL;
@@ -38,12 +38,10 @@ int	main()
 
 	stck_addlst(&b, create_node(2));
 	stck_addlst(&b, create_node(5));
-/*	stck_addlst(&b, create_node(2));
-	stck_addlst(&b, create_node(1));
-	stck_addlst(&b, create_node(7)); */
+
 	display_stacks(&a, &b);
 	printf("\n\n");
-	push_swap(a, b);
+	push_swap(a, b); */
 	return (0);
 }
 void	init_stacks(char **numbers)
@@ -71,8 +69,9 @@ void	init_stacks(char **numbers)
 	{
 		stck_push(&b, &a, 'b');
 		stck_push(&b, &a, 'b');
+		push_swap(a, b);
 		// ft_printf("cheapest_number: %d\n", get_cheapestnumber());
-		display_stacks(&a, &b);
+		// display_stacks(&a, &b);
 	}
 }
 
