@@ -1,21 +1,21 @@
 SRC = main.c display.c instructions.c stack.c parser.c push_swap.c utils.c push.c final_push.c
-OBJ = $(addprefix src/,$(SRC:.c=.o))
+OBJ = $(SRC:.c=.o)
 NAME = push_swap
-CFLAGS = -Wall -Werror -Wextra
+# CFLAGS = -Wall -Werror -Wextra
 CC = cc
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(addprefix src/,$(OBJ))
 	$(CC) $(CFLAGS) $^ -lft -L./libft -o $@
-
+	mv $^ obj
 %.o: %.c
 	make -C libft
 	$(CC) $(CFLAGS) -I./Include -c $< -o $@
 
 clean:
 	make clean -C libft
-	rm -f $(OBJ)
+	rm -f $(addprefix obj/,$(OBJ))
 
 fclean: clean
 	make fclean -C libft

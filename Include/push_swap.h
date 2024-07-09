@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:50:00 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/06 17:55:57 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/07 19:27:50 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	stck_rotate(t_stack **stack, int sens, int c);
 
 /* parcer.c */
 int		parser(char **argv);
-void	init_stacks(char **numbers);
+void	init_stacks(char **numbers, int argc);
 int		is_sortedstck(t_stack *stack);
 int		is_revsortedstck(t_stack *stack);
 void	sort_3(t_stack **stack, char c);
@@ -74,8 +74,8 @@ int		is_min(int nbr, t_stack *b);
 int		get_max(t_stack *b);
 int		smallest(int a, int b);
 int		get_absolute(int value);
-int	get_index(int nbr, t_stack *stack);
-int	is_sephalf(int nbra, int nbrb, t_stack *a, t_stack *b);
+int		get_index(int nbr, t_stack *stack);
+int		is_sephalf(t_data *data, t_stack *a, t_stack *b);
 
 
 int	get_numberidx(int idx, t_stack *stack);

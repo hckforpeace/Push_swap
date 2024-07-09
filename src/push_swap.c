@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:55:08 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/06 17:54:59 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/07 19:11:17 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,6 @@ int	get_cheapestnumbera(t_stack *a, t_stack *b, t_data *data)
 	return (number);
 }
 
-
-/* int	get_price(int nbr, t_stack *a, t_stack *b)
-{
-	int	len_a;
-	int	len_b;
-	int	nbr_b;
-	int	moves_a;
-	int	moves_b;
-
-	len_a = stck_len(&a);
-	len_b = stck_len(&b);
-	if (is_max(nbr, b) || is_min(nbr, b))
-	{
-		nbr_b = get_max(b);
-		moves_a = get_movestotop(nbr, a);
-		moves_b = get_movestotop(nbr_b, b);
-		if (is_sephalf(nbr, nbr_b, a, b))
-			return (moves_a + moves_b + 1);
-		return (get_totalmoves(moves_a, moves_b, len_a, len_b));
-	}
-	else
-	{
-		nbr_b = get_number(nbr, b);
-		moves_a = get_movestotop(nbr, a);
-		moves_b = get_movestotop(nbr_b, b);
-		if (is_sephalf(nbr, nbr_b, a, b))
-			return (moves_a + moves_b + 1);
-		return (get_totalmoves(moves_a, moves_b, len_a, len_b));
-	}
-} */
-
 int	get_price(t_data *data, t_stack **a, t_stack **b, int action)
 {
 
@@ -80,31 +49,30 @@ int	get_price(t_data *data, t_stack **a, t_stack **b, int action)
 	data->movesb = get_movestotop(data->nbrb, *b);
 	if (action == CALC)
 	{
-		if (is_sephalf(data->nbra, data->nbrb, *a, *b))
+		if (is_sephalf(data, *a, *b))
 			return (data->movesa + data->movesb + 1);
 		return (get_totalmoves(data->movesa, data->movesb, data->lena, data->lenb));
 	}
 	else
 	{
-		if (is_sephalf(data->nbra, data->nbrb, *a, *b))
-			return (apply_sep(data, a, b, PB));
-		return (apply_moves(data, a, b, PB));
+		if (is_sephalf(data, *a, *b))
+		{
+			apply_sep(data, a, b, PB);
+			return (1);
+		}
+		apply_moves(data, a, b, PB);
+		return (1);
 	}
 }
 
-int	is_sephalf(int nbra, int nbrb, t_stack *a, t_stack *b)
+int	is_sephalf(t_data *data, t_stack *a, t_stack *b)
 {
-	int	len_a;
-	int	len_b;
 	int	idxa;
 	int	idxb;
 	
-	len_a = stck_len(&a);
-	len_b = stck_len(&b);
-	idxa = get_index(nbra, a);
-	idxb = get_index(nbrb, b);
-	// printf("idxa: %d, lena: %d, idxb: %d, lenb: %d, nbrb: %d\n", idxa, len_a, idxb, len_b, nbrb);
-	if ((idxa < len_a / 2 && idxb > len_b / 2) || (idxb < len_b / 2 && idxa > len_a / 2))
+	idxa = get_index(data->nbra, a);
+	idxb = get_index(data->nbrb, b);
+	if ((idxa <= data->lena / 2 && idxb > data->lenb / 2) || (idxb <= data->lenb / 2 && idxa > data->lena / 2))
 		return (1);
 	return (0);
 }
@@ -112,9 +80,9 @@ int	is_sephalf(int nbra, int nbrb, t_stack *a, t_stack *b)
 //	retruns the total number of moves need to place the number from a to b
 int	get_totalmoves(int	movesa, int movesb, int len_a, int len_b)
 {
-	if (movesa == len_a / 2 && movesb == len_b / 2)
+/* 	if (movesa == len_a / 2 && movesb == len_b / 2)
 		return (movesa + 1);
-	else
+	else */
 		return (smallest(movesa, movesb) + get_absolute(movesa - movesb) + 1);
 }
 
@@ -137,9 +105,9 @@ int	get_movestotop(int nbr, t_stack *stack)
 	}
 	if (temp->next == stack)
 		return (get_absolute(stck_len(&stack) - i));
-	if ((stcklen % 2) == 1 && i == (stcklen / 2))
-		return (i);
-	if (i < stcklen / 2)
+/* 	if ((stcklen % 2) == 1 && i == (stcklen / 2))
+		return (i); */
+	if (i <= stcklen / 2)
 		return (i);
 	return (get_absolute(stck_len(&stack) - i));
 }
@@ -159,8 +127,6 @@ int	get_number(int nbr, t_stack *b)
 			return (temp->next->num);
 		temp = temp->next;
 	}
-/*  	if (nbr > b->prev->num && nbr < temp->next->num)
-		return (b->prev->num); */
 	return (b->num);
 }
 int	get_index(int nbr, t_stack *stack)
@@ -179,20 +145,3 @@ int	get_index(int nbr, t_stack *stack)
 	}
 	return (i);
 }
-
-/* int	get_numberidx(int idx, t_stack *stack)
-{
-	t_stack	*temp;
-	int		i;
-
-	i = 0;
-	temp = stack;
-	while (temp->next != stack)
-	{
-		if (i == idx)
-			return (temp->num);
-		i++;
-		temp = temp->next;
-	}
-	return (temp->num);
-} */
