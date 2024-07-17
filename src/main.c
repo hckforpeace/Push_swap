@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/07 19:40:55 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/07 19:43:06 by pierre           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
+#include <limits.h>
 
 int	main(int argc, char **argv)
 {
 	char	**split;
-
 	if (argc == 1)
 		return (0);
 	else if (argc >= 2)
@@ -23,31 +11,46 @@ int	main(int argc, char **argv)
 		if (argc == 2)
 		{
 			split = ft_split(argv[1], ' ');
-			if (!split)
-				return (1);
 			if (parser(split))
-				init_stacks(split, argc);
+				init_stacks(split);
 			else
 				ft_printf("Error\n");
 			clear_wordar(split);
 		}
 		else if (parser(&argv[1]))
-			init_stacks(&argv[1], argc);
+			init_stacks(&argv[1]);
 		else
 			ft_printf("Error\n");
 	}
-	return (0);
-}
 
-void	init_stacks(char **numbers, int argc)
-{
-	t_stack	*a;
-	t_stack	*b;
+/* 	t_stack *a;
+	t_stack *b;
 
 	b = NULL;
 	a = NULL;
-	if (argc == 2)
-		return ;
+	stck_addlst(&a, create_node(7));
+ 	stck_addlst(&a, create_node(1));
+	stck_addlst(&a, create_node(6));
+	stck_addlst(&a, create_node(3));
+	stck_addlst(&a, create_node(9));
+	stck_addlst(&a, create_node(4));
+	stck_addlst(&a, create_node(8));
+
+	stck_addlst(&b, create_node(2));
+	stck_addlst(&b, create_node(5));
+
+	display_stacks(&a, &b);
+	printf("\n\n");
+	push_swap(a, b); */
+	return (0);
+}
+void	init_stacks(char **numbers)
+{
+	t_stack *a;
+	t_stack *b;
+
+	b = NULL;
+	a = NULL;
 	while (*numbers)
 	{
 		stck_addlst(&a, create_node(ft_atoi(*numbers)));
@@ -55,15 +58,21 @@ void	init_stacks(char **numbers, int argc)
 	}
 	if (stck_len(&a) == 2)
 	{
-		if (!is_sortedstck(a))
+		if (is_sortedstck(a))
+			return ;
+		else
 			stck_swap(&a, 'a');
 	}
 	else if (stck_len(&a) == 3)
 		sort_3(&a, 'a');
 	else
+	{
+		stck_push(&b, &a, 'b');
+		stck_push(&b, &a, 'b');
 		push_swap(a, b);
-	stck_clr(&a);
-	stck_clr(&b);
+		// ft_printf("cheapest_number: %d\n", get_cheapestnumber());
+		// display_stacks(&a, &b);
+	}
 }
 
 int	is_sortedstck(t_stack *stack)
@@ -105,17 +114,14 @@ void	sort_3(t_stack **stack, char c)
 		stck_rotate(stack, R, c);
 		stck_swap(stack, c);
 	}
-	else if (((*stack)->num) > (*stack)->prev->num
-		&& (*stack)->prev->num > (*stack)->next->num)
+	else if (((*stack)->num) > (*stack)->prev->num && (*stack)->prev->num > (*stack)->next->num)
 		stck_rotate(stack, R, c);
-	else if ((*stack)->num < (*stack)->prev->num
-		&& (*stack)->prev->num < (*stack)->next->num)
+	else if ((*stack)->num < (*stack)->prev->num && (*stack)->prev->num < (*stack)->next->num)
 	{
 		stck_rotate(stack, RR, c);
 		stck_swap(stack, c);
 	}
-	else if ((*stack)->num < (*stack)->prev->num
-		&& (*stack)->prev->num > (*stack)->num)
+	else if ((*stack)->num < (*stack)->prev->num && (*stack)->prev->num > (*stack)->num)
 		stck_swap(stack, c);
 	else
 		stck_rotate(stack, RR, c);
