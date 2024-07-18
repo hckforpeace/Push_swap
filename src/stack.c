@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:59:58 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/03 13:58:20 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/17 15:15:12 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_stack	*create_node(int num)
 {
 	struct s_stack	*node;
-	
+
 	node = (struct s_stack *)malloc(sizeof(struct s_stack));
 	if (!node)
 		return (NULL);
@@ -25,27 +25,27 @@ t_stack	*create_node(int num)
 	return (node);
 }
 
-void stck_addlst(t_stack **stack, t_stack *lst) {
-    t_stack *temp;
+void	stck_addlst(t_stack **stack, t_stack *lst)
+{
+	t_stack	*temp;
 
-    if (!lst)
-        return;
-    if (!*stack) 
+	if (!lst)
+		return ;
+	if (!*stack)
 	{
-        *stack = lst;
-        lst->next = lst;
-        lst->prev = lst;
-    } 
+		*stack = lst;
+		lst->next = lst;
+		lst->prev = lst;
+	}
 	else
 	{
-        temp = (*stack)->prev;
-        temp->next = lst;
-        lst->prev = temp;
-        lst->next = *stack;
-        (*stack)->prev = lst;
-    }
+		temp = (*stack)->prev;
+		temp->next = lst;
+		lst->prev = temp;
+		lst->next = *stack;
+		(*stack)->prev = lst;
+	}
 }
-
 
 void	stck_addfst(t_stack **stack, t_stack *fst)
 {

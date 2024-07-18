@@ -15,8 +15,8 @@
 // determine if the number given from stack a is the biggest in stack b
 int	is_max(int nbr, t_stack *b)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	temp = b;
 	while (temp->next != b)
 	{
@@ -32,8 +32,8 @@ int	is_max(int nbr, t_stack *b)
 // determine if the number given from stack a is the smallest in stack b
 int	is_min(int nbr, t_stack *b)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	temp = b;
 	while (temp->next != b)
 	{
@@ -78,6 +78,6 @@ int	get_absolute(int value)
 {
 	if (value > 0)
 		return (value);
-	else 
+	else
 		return (value * -1);
 }

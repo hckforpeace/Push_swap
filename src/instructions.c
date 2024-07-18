@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:01:16 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/03 18:03:58 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/07 19:40:28 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_stack	*stck_pop(t_stack **stack)
 
 void	stck_push(t_stack **dest, t_stack **src, char c)
 {
-	t_stack *pop;
+	t_stack	*pop;
 
 	if (c == 'a' || c == 'b')
 		ft_printf("p%c\n", c);
@@ -60,7 +60,7 @@ void	stck_push(t_stack **dest, t_stack **src, char c)
 
 int	stck_len(t_stack **stack)
 {
-	int	len;
+	int		len;
 	t_stack	*temp;
 
 	if (!*stack)

@@ -1,4 +1,4 @@
-SRC = main.c display.c instructions.c stack.c parser.c push_swap.c utils.c push.c final_push.c
+SRC = main.c display.c instructions.c stack.c parser.c push_swap.c utils.c push.c final_push.c utils2.c
 OBJ = $(addprefix src/,$(SRC:.c=.o))
 NAME = push_swap
 CFLAGS = -Wall -Werror -Wextra

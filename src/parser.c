@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:01:07 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/03 16:49:50 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/17 12:22:38 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_integer(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (str[i] == '-')
 		i++;
@@ -30,7 +30,7 @@ static int	is_integer(char *str)
 
 static int	is_overflow(char *str)
 {
-	double 	vald;
+	double	vald;
 	int		vali;
 
 	vald = ft_atof(str);
@@ -41,8 +41,9 @@ static int	is_overflow(char *str)
 		return (1);
 	if (vald != vali)
 		return (1);
-	return (0);	
+	return (0);
 }
+
 static int	contains_dup(char **argv)
 {
 	int		i;
@@ -78,5 +79,3 @@ int	parser(char **argv)
 	}
 	return (1);
 }
-
-
