@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 20:17:31 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/17 15:16:12 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 11:24:42 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,21 @@ void	stck_display(t_stack **stack)
 		}
 		printf("%d\n", temp->num);
 	}
+}
+
+int	is_sortedstck(t_stack *stack)
+{
+	t_stack	*temp;
+
+	temp = stack;
+	while (temp->next != stack)
+	{
+		if (temp->num < (temp->next)->num)
+			temp = temp->next;
+		else
+			return (0);
+	}
+	return (1);
 }
 
 /* void    display_stacks(t_stack **s1, t_stack **s2)

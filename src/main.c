@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 19:40:55 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/17 22:56:59 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 11:44:41 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,6 @@ void	init_stacks(char **numbers)
 		push_swap(a, b);
 	stck_clr(&a);
 	stck_clr(&b);
-}
-
-int	is_sortedstck(t_stack *stack)
-{
-	t_stack	*temp;
-
-	temp = stack;
-	while (temp->next != stack)
-	{
-		if (temp->num < (temp->next)->num)
-			temp = temp->next;
-		else
-			return (0);
-	}
-	return (1);
 }
 
 int	is_revsortedstck(t_stack *stack)

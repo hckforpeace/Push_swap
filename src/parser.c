@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:01:07 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/17 12:22:38 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:53:00 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,25 @@ int	parser(char **argv)
 			return (0);
 	}
 	return (1);
+}
+
+t_stack	*add_tostack(char **argv)
+{
+	t_stack	*a;
+	t_stack	*node;
+
+	a = create_node(ft_atoi(*argv));
+	argv++;
+	while (*argv)
+	{
+		node = create_node(ft_atoi(*argv));
+		if (node == NULL)
+		{
+			stck_clr(&a);
+			return (NULL);
+		}
+		stck_addlst(&a, node);
+		argv++;
+	}
+	return (a);
 }

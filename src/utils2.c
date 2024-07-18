@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:18:21 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/17 15:19:45 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:41:58 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,30 @@ int	get_index(int nbr, t_stack *stack)
 		temp = temp->next;
 	}
 	return (i);
+}
+
+char	**add_instr(char *instruct, char **wordlist)
+{
+	int		num_words;
+	char	**wl;
+	int		i;
+
+	i = 0;
+	num_words = count_words(wordlist);
+	wl = (char **)malloc(sizeof(char *) * (num_words + 2));
+	if (wl == 0)
+	{
+		clear_wordar(wordlist);
+		exit(1);
+	}
+	while (wordlist && wordlist[i])
+	{
+		wl[i] = wordlist[i];
+		i++;
+	}
+	wl[i] = instruct;
+	i++;
+	wl[i] = 0;
+	free(wordlist);
+	return (wl);
 }

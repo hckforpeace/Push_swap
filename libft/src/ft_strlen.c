@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 00:23:54 by pierre            #+#    #+#             */
-/*   Updated: 2024/04/15 00:23:55 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 10:48:16 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	n;
 
+	if (!s)
+		return (0);
 	n = 0;
 	while (s[n])
 		n++;

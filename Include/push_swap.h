@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:50:00 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/18 09:33:20 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:45:43 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,16 @@ int		get_numberb(int nbr, t_stack *a);
 int		get_min(t_stack *a);
 int		get_cheapestnumberb(t_stack *a, t_stack *b, t_data *data);
 void	push_swapb(t_stack *a, t_stack *b, t_data *data);
+
+// BONUS
+void	process(t_stack **a, t_stack **b);
+void	apply_tostack(char *instr, int instr_len, t_stack **a, t_stack **b);
+void	apply_tostackaux(char *instr, int instr_len, t_stack **a, t_stack **b);
+int		parse_input(char *line, int line_len, t_stack **a, t_stack **b);
+t_stack	*add_tostack(char **argv);
+int		is_sortedstck(t_stack *stack);
+char	**read_instructions(void);
+int		count_words(char **wordlist);
+char	**add_instr(char *instruct, char **wordlist);
 
 #endif

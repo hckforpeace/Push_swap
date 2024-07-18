@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:59:58 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/17 15:15:12 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:53:36 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,19 @@ void	stck_clr(t_stack **stack)
 	}
 	free(temp);
 	*stack = NULL;
+}
+
+int	count_words(char **wordlist)
+{
+	int	len;
+
+	if (!wordlist)
+		return (0);
+	len = 0;
+	while (*wordlist)
+	{
+		len++;
+		wordlist++;
+	}
+	return (len);
 }
