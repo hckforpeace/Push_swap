@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:50:00 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/18 14:45:43 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/20 13:34:53 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		get_cheapestnumberb(t_stack *a, t_stack *b, t_data *data);
 void	push_swapb(t_stack *a, t_stack *b, t_data *data);
 
 // BONUS
-void	process(t_stack **a, t_stack **b);
+void	process(char **params);
 void	apply_tostack(char *instr, int instr_len, t_stack **a, t_stack **b);
 void	apply_tostackaux(char *instr, int instr_len, t_stack **a, t_stack **b);
 int		parse_input(char *line, int line_len, t_stack **a, t_stack **b);

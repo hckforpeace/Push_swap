@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:38:32 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/18 14:57:28 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/20 14:08:22 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,53 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+	char	**split;
 
 	if (argc == 1)
-		return (1);
-	else
+		return (0);
+	else if (argc >= 2)
 	{
-		if (!parser(&argv[1]))
-			write(2, "Error\n", 7);
-		else
+		if (argc == 2)
 		{
-			a = add_tostack(&argv[1]);
-			b = NULL;
-			process(&a, &b);
-			stck_clr(&a);
-			stck_clr(&b);
+			split = ft_split(argv[1], ' ');
+			if (!split)
+				return (1);
+			if (parser(split))
+				process(split);
+			else
+				write(2, "Error\n", 6);
+			clear_wordar(split);
 		}
+		else if (parser(&argv[1]))
+			process(&argv[1]);
+		else
+			write(2, "Error\n", 6);
 	}
 	return (0);
 }
 
-void	process(t_stack **a, t_stack **b)
+void	process(char **params)
 {
 	char	**instructions;
 	int		i;
+	t_stack	*a;
+	t_stack	*b;
 
+	a = add_tostack(params);
+	b = NULL;
 	i = 0;
 	instructions = read_instructions();
 	while (instructions && instructions[i])
 	{
-		apply_tostack(instructions[i], ft_strlen(instructions[i]), a, b);
+		apply_tostack(instructions[i], ft_strlen(instructions[i]), &a, &b);
 		i++;
 	}
-	if (is_sortedstck(*a) && stck_len(b) == 0)
+	if (instructions && is_sortedstck(a) && stck_len(&b) == 0)
 		ft_printf("OK\n");
-	else
+	else if (instructions)
 		ft_printf("KO\n");
+	stck_clr(&a);
+	stck_clr(&b);
 	clear_wordar(instructions);
 }
 
@@ -63,6 +73,17 @@ char	**read_instructions(void)
 	line = get_next_line(0);
 	while (line != NULL)
 	{
+		if (ft_strcmp(line, "rra\n") || ft_strcmp(line, "rrb\n")
+			|| ft_strcmp(line, "rrr\n") || ft_strcmp(line, "sa\n")
+			|| ft_strcmp(line, "sb\n") || ft_strcmp(line, "ss\n")
+			|| ft_strcmp(line, "pa\n") || ft_strcmp(line, "pb\n")
+			|| ft_strcmp(line, "ra\n") || ft_strcmp(line, "rb\n")
+			|| ft_strcmp(line, "rr\n"))
+		{
+			free(line);
+			write(2, "Error\n", 6);
+			return (NULL);
+		}
 		instructions = add_instr(line, instructions);
 		line = get_next_line(0);
 	}
@@ -75,7 +96,7 @@ void	apply_tostackaux(char *instr, int instr_len, t_stack **a, t_stack **b)
 		stck_rotate(a, RR, '0');
 	else if (!ft_strncmp(instr, "rrb", instr_len - 1))
 		stck_rotate(b, RR, '0');
-	else if (!ft_strncmp(instr, "rrb", instr_len - 1))
+	else if (!ft_strncmp(instr, "rrr", instr_len - 1))
 	{
 		stck_rotate(b, RR, '0');
 		stck_rotate(a, RR, '0');
