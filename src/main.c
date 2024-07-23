@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 19:40:55 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/18 11:44:41 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/23 11:45:35 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,20 @@ void	init_stacks(char **numbers)
 	a = NULL;
 	if (numbers[1] == 0)
 		return ;
-	while (*numbers)
+	a = add_tostack(numbers);
+	if (a == NULL)
 	{
-		stck_addlst(&a, create_node(ft_atoi(*numbers)));
-		numbers++;
+		write(2, "Malloc error exiting\n", 21);
+		return ;
 	}
 	if (stck_len(&a) == 2)
 	{
 		if (!is_sortedstck(a))
 			stck_swap(&a, 'a');
 	}
-	else if (stck_len(&a) == 3)
+	else if (stck_len(&a) == 3 && !is_sortedstck(a))
 		sort_3(&a, 'a');
-	else
+	else if (!is_sortedstck(a))
 		push_swap(a, b);
 	stck_clr(&a);
 	stck_clr(&b);
@@ -83,6 +84,8 @@ int	is_revsortedstck(t_stack *stack)
 
 void	sort_3(t_stack **stack, char c)
 {
+	if (!*stack)
+		return ;
 	if (is_sortedstck(*stack))
 		return ;
 	else if (is_revsortedstck(*stack))

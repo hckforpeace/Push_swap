@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:08:48 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/03 16:39:30 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/23 11:15:22 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,9 @@ double	ft_atof(const char *string)
 {
 	double	result;
 	double	decimal;
-	int		is_neg;
 
-	is_neg = 0;
-	if (string[0] == '-')
-		is_neg = 1;
-	result = ft_atoi(&string[is_neg]);
-	decimal = get_decimal(&string[numb_len(result, 10) + is_neg]);
+	result = ft_atoi(string);
+	decimal = get_decimal(&string[numb_len(result, 10)]);
 	result += decimal;
-	if (is_neg)
-		return (result * -1);
 	return (result);
 }

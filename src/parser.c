@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:01:07 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/18 14:53:00 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/23 11:15:40 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static int	is_overflow(char *str)
 
 	vald = ft_atof(str);
 	vali = ft_atoi(str);
-	if (str[0] == '-' && ft_strlen(str) > 11)
+	if (*str == '-' && ft_strlen(str) > 11)
 		return (1);
-	else if (ft_strlen(str) > 10)
+	else if (*str != '-' && ft_strlen(str) > 10)
 		return (1);
 	if (vald != vali)
 		return (1);
@@ -86,6 +86,8 @@ t_stack	*add_tostack(char **argv)
 	t_stack	*node;
 
 	a = create_node(ft_atoi(*argv));
+	if (!a)
+		return (NULL);
 	argv++;
 	while (*argv)
 	{

@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 00:22:57 by pierre            #+#    #+#             */
-/*   Updated: 2024/06/07 14:03:19 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/23 10:08:31 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	ft_alloc_words(char const *s, char c, char **strs)
 	{
 		if (n != 0 && s[n] == c && s[n - 1] != c)
 		{
-			if (ft_alloc(idx_ptr, len, &s[n - len], strs) > 0)
+			if (ft_alloc(idx_ptr, len, &s[n - len], strs) >= 0)
 				return (idx_ptr);
 			idx_ptr++;
 			len = 0;
@@ -109,7 +109,7 @@ char	**ft_split(char const *s, char c)
 /* #include "stdio.h"
 int main()
 {
-	char *cmd = "grep a";
+	char *cmd = "";
 	char **s = ft_split(cmd, ' ');
 	if (!s)
 	{

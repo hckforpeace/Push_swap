@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:38:32 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/20 14:08:22 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/23 13:44:39 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ int	main(int argc, char **argv)
 			if (!split)
 				return (1);
 			if (parser(split))
-				process(split);
+				process(split, 1);
 			else
 				write(2, "Error\n", 6);
 			clear_wordar(split);
 		}
 		else if (parser(&argv[1]))
-			process(&argv[1]);
+			process(&argv[1], 0);
 		else
 			write(2, "Error\n", 6);
 	}
 	return (0);
 }
 
-void	process(char **params)
+void	process(char **params, int flag)
 {
 	char	**instructions;
 	int		i;
@@ -49,22 +49,22 @@ void	process(char **params)
 	a = add_tostack(params);
 	b = NULL;
 	i = 0;
-	instructions = read_instructions();
+	instructions = read_instructions(a, params, flag);
 	while (instructions && instructions[i])
 	{
 		apply_tostack(instructions[i], ft_strlen(instructions[i]), &a, &b);
 		i++;
 	}
-	if (instructions && is_sortedstck(a) && stck_len(&b) == 0)
+	if (is_sortedstck(a) && stck_len(&b) == 0)
 		ft_printf("OK\n");
-	else if (instructions)
+	else
 		ft_printf("KO\n");
 	stck_clr(&a);
 	stck_clr(&b);
 	clear_wordar(instructions);
 }
 
-char	**read_instructions(void)
+char	**read_instructions(t_stack *a, char **params, int flag)
 {
 	char	*line;
 	char	**instructions;
@@ -73,16 +73,19 @@ char	**read_instructions(void)
 	line = get_next_line(0);
 	while (line != NULL)
 	{
-		if (ft_strcmp(line, "rra\n") || ft_strcmp(line, "rrb\n")
-			|| ft_strcmp(line, "rrr\n") || ft_strcmp(line, "sa\n")
-			|| ft_strcmp(line, "sb\n") || ft_strcmp(line, "ss\n")
-			|| ft_strcmp(line, "pa\n") || ft_strcmp(line, "pb\n")
-			|| ft_strcmp(line, "ra\n") || ft_strcmp(line, "rb\n")
-			|| ft_strcmp(line, "rr\n"))
+		if (ft_strcmp(line, "rra\n") && ft_strcmp(line, "rrb\n")
+			&& ft_strcmp(line, "rrr\n") && ft_strcmp(line, "sa\n")
+			&& ft_strcmp(line, "sb\n") && ft_strcmp(line, "ss\n")
+			&& ft_strcmp(line, "pa\n") && ft_strcmp(line, "pb\n")
+			&& ft_strcmp(line, "ra\n") && ft_strcmp(line, "rb\n")
+			&& ft_strcmp(line, "rr\n"))
 		{
 			free(line);
+			stck_clr(&a);
+			if (flag)
+				clear_wordar(params);
 			write(2, "Error\n", 6);
-			return (NULL);
+			exit(1);
 		}
 		instructions = add_instr(line, instructions);
 		line = get_next_line(0);

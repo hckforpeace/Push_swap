@@ -6,16 +6,16 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 00:20:33 by pierre            #+#    #+#             */
-/*   Updated: 2024/04/15 00:20:36 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/23 11:13:47 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_atoi(const char *nptr)
+double	ft_atoi(const char *nptr)
 {
-	int	val;
-	int	isneg;
+	double	val;
+	int		isneg;
 
 	isneg = 1;
 	val = 0;
