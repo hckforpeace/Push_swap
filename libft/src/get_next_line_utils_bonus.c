@@ -6,25 +6,27 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:58:51 by pierre            #+#    #+#             */
-/*   Updated: 2024/06/03 16:35:35 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/31 23:55:02 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-/* char	*ft_strjoin(char *buffer, char *str)
+char	*ft_strjoinaux(char *buffer, char *str)
 {
 	char	*join;
 
 	join = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(str) + 1));
+	if (!join)
+		return (NULL);
 	join[0] = '\0';
 	ft_strcat(join, buffer);
 	ft_strcat(join, str);
 	free(buffer);
 	return (join);
-} */
+}
 
-char	*ft_strcat(char *dest, const char *src)
+/* static char	*ft_strcat(char *dest, const char *src)
 {
 	if (!src)
 		return (dest);
@@ -34,7 +36,7 @@ char	*ft_strcat(char *dest, const char *src)
 		*dest++ = *src++;
 	*dest = '\0';
 	return (dest);
-}
+} */
 
 /* char	*ft_strchr(const char *s, int c)
 {

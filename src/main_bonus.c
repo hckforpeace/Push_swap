@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:38:32 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/23 13:44:39 by pierre           ###   ########.fr       */
+/*   Updated: 2024/08/01 00:05:30 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ char	**read_instructions(t_stack *a, char **params, int flag)
 			&& ft_strcmp(line, "ra\n") && ft_strcmp(line, "rb\n")
 			&& ft_strcmp(line, "rr\n"))
 		{
-			free(line);
 			stck_clr(&a);
-			if (flag)
-				clear_wordar(params);
+			free_stuff(line, instructions, params, flag);
 			write(2, "Error\n", 6);
 			exit(1);
 		}

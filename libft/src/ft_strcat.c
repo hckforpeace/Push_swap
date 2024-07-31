@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 00:23:02 by pierre            #+#    #+#             */
-/*   Updated: 2024/05/02 14:52:11 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/31 23:53:02 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_strcat(char *dest, const char *src)
 {
+	if (!src)
+		return (dest);
 	while (*dest)
 		dest++;
 	while (*src)

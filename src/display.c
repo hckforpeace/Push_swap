@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 20:17:31 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/23 09:28:16 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/31 23:58:34 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	is_sortedstck(t_stack *stack)
 	t_stack	*temp;
 
 	temp = stack;
+	if (!temp)
+		return (0);
 	while (temp->next != stack)
 	{
 		if (temp->num < (temp->next)->num)
@@ -78,6 +80,15 @@ int	is_sortedstck(t_stack *stack)
 			return (0);
 	}
 	return (1);
+}
+
+void	free_stuff(char *line, char **instructions, char **params, int flag)
+{
+	free(line);
+	if (flag)
+		clear_wordar(params);
+	if (instructions)
+		clear_wordar(instructions);
 }
 
 /* void    display_stacks(t_stack **s1, t_stack **s2)

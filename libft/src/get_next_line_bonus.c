@@ -6,13 +6,13 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 21:14:55 by pierre            #+#    #+#             */
-/*   Updated: 2024/06/03 16:36:20 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/31 23:53:18 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*get_next_lineb(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*buffer[1024];
 	char		*str;
@@ -45,7 +45,7 @@ char	*get_buffer_line(char *buffer, int fd)
 		str[ret] = '\0';
 		if (ret == 0)
 			break ;
-		buffer = ft_strjoin(buffer, str);
+		buffer = ft_strjoinaux(buffer, str);
 	}
 	free(str);
 	return (buffer);

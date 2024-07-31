@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:50:00 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/23 13:45:09 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/31 22:31:36 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ int		is_sortedstck(t_stack *stack);
 char	**read_instructions(t_stack *a, char **params, int flag);
 int		count_words(char **wordlist);
 char	**add_instr(char *instruct, char **wordlist);
+void	free_stuff(char *line, char **instructions, char **params, int flag);
 
 #endif

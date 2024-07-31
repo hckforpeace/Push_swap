@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:24:41 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/23 10:54:44 by pierre           ###   ########.fr       */
+/*   Updated: 2024/07/31 23:49:28 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,20 +126,20 @@ int		next_disp(const char *str);
 int		get_format(const char *str);
 
 //gnl &bonus
-char	*ft_strchr(const char *s, int c);
+// char	*ft_strchr(const char *s, int c);
 char	*get_next_line(int fd);
 char	*get_line_mine(char *str);
 char	*get_buffer_line(char *buffer, int fd);
-char	*ft_strcat(char *dest, const char *src);
 char	*reset_buffer(char	*buffer);
+char	*ft_strjoinaux(char *buffer, char *str);
 // void	ft_lstcleargnl(t_list **lst);
 
-char	*get_next_line(int fd);
-int		contains_nextline(char *s);
-int		add_node(t_list **lst, int len, char *buffer);
-char	*get_string(t_list *lst);
-int		get_total_length(t_list *lst);
-int		ft_setter(char *buffer);
+// char	*get_next_line(int fd);
+// int		contains_nextline(char *s);
+// int		add_node(t_list **lst, int len, char *buffer);
+// char	*get_string(t_list *lst);
+// int		get_total_length(t_list *lst);
+// int		ft_setter(char *buffer);
 
 //  math
 int		ft_pow(int i, int pow);

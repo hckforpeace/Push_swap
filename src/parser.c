@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:01:07 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/23 11:15:40 by pierre           ###   ########.fr       */
+/*   Updated: 2024/08/01 00:08:54 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static int	contains_dup(char **argv)
 
 int	parser(char **argv)
 {
+	if (!*argv)
+		return (0);
 	if (contains_dup(argv))
 		return (0);
 	while (*argv)

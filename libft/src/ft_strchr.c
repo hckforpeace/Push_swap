@@ -6,7 +6,7 @@
 /*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 00:23:05 by pierre            #+#    #+#             */
-/*   Updated: 2024/04/15 00:32:34 by pierre           ###   ########.fr       */
+/*   Updated: 2024/08/01 00:10:45 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strchr(const char *s, int c)
 	str = (char *)s;
 	v = c;
 	n = 0;
+	if (s == 0)
+		return (NULL);
 	while (str[n])
 	{
 		if ((unsigned char)str[n] == v)
