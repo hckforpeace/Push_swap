@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pbeyloun <pbeyloun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:01:07 by pierre            #+#    #+#             */
-/*   Updated: 2024/08/01 00:08:54 by pierre           ###   ########.fr       */
+/*   Updated: 2024/08/07 12:28:56 by pbeyloun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ static int	is_integer(char *str)
 
 	i = 0;
 	if (str[i] == '-')
+	{
+		if (str[i + 1] == '0' || str[i + 1] == '\0')
+			return (0);
 		i++;
+	}
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
@@ -68,7 +72,7 @@ static int	contains_dup(char **argv)
 
 int	parser(char **argv)
 {
-	if (!*argv)
+	if (!argv[0])
 		return (0);
 	if (contains_dup(argv))
 		return (0);

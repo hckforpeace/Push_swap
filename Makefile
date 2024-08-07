@@ -12,13 +12,14 @@ all: $(NAME)
 bonus: $(NAMEB)
 
 $(NAMEB): $(OBJ_BONUS)
+	make -C libft
 	$(CC) $(CFLAGS) $^ -lft -L./libft -o $@
 
 $(NAME): $(OBJ)
+	make -C libft
 	$(CC) $(CFLAGS) $^ -lft -L./libft -o $@
 
 %.o: %.c
-	make -C libft
 	$(CC) $(CFLAGS) -I./Include -c $< -o $@
 
 clean:

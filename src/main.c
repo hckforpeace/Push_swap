@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pbeyloun <pbeyloun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 19:40:55 by pierre            #+#    #+#             */
-/*   Updated: 2024/07/23 11:45:35 by pierre           ###   ########.fr       */
+/*   Updated: 2024/08/07 12:14:23 by pbeyloun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	main(int argc, char **argv)
 			if (parser(split))
 				init_stacks(split);
 			else
-				ft_printf("Error\n");
+				ft_putstr_fd("Error\n", 2);
 			clear_wordar(split);
 		}
 		else if (parser(&argv[1]))
 			init_stacks(&argv[1]);
 		else
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 	}
 	return (0);
 }

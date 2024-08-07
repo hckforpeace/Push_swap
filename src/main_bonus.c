@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre <pierre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pbeyloun <pbeyloun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:38:32 by pierre            #+#    #+#             */
-/*   Updated: 2024/08/01 00:05:30 by pierre           ###   ########.fr       */
+/*   Updated: 2024/08/07 10:29:26 by pbeyloun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	main(int argc, char **argv)
 			if (parser(split))
 				process(split, 1);
 			else
-				write(2, "Error\n", 6);
+				ft_putstr_fd("Error\n", 2);
 			clear_wordar(split);
 		}
 		else if (parser(&argv[1]))
 			process(&argv[1], 0);
 		else
-			write(2, "Error\n", 6);
+			ft_putstr_fd("Error\n", 2);
 	}
 	return (0);
 }
@@ -82,7 +82,7 @@ char	**read_instructions(t_stack *a, char **params, int flag)
 		{
 			stck_clr(&a);
 			free_stuff(line, instructions, params, flag);
-			write(2, "Error\n", 6);
+			ft_putstr_fd("Error\n", 2);
 			exit(1);
 		}
 		instructions = add_instr(line, instructions);
